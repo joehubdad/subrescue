@@ -1,0 +1,103 @@
+[ui_down, ui_home, toggle_lights, trim_down, ui_focus_next, ui_page_up, ui_focus_prev, ui_right, ui_end, interact, rescue, ui_left, ui_up, ui_page_down, ui_cancel, ui_boost, ui_select, ui_accept, trim_up]
+action ui_down --> uses input buttons: [[InputEventKey:36], [InputEventJoypadButton:37]]
+key button Down
+key button Down
+action ui_home --> uses input buttons: [[InputEventKey:40]]
+key button Home
+action toggle_lights --> uses input buttons: [[InputEventKey:54], [InputEventJoypadButton:55]]
+key button L
+key button L
+action trim_down --> uses input buttons: [[InputEventJoypadMotion:56], [InputEventKey:57]]
+key button InputEventJoypadMotion : axis=2, axis_value=1
+key button InputEventJoypadMotion : axis=2, axis_value=1
+action ui_focus_next --> uses input buttons: [[InputEventKey:28]]
+key button Tab
+action ui_page_up --> uses input buttons: [[InputEventKey:38]]
+key button PageUp
+action ui_focus_prev --> uses input buttons: [[InputEventKey:29]]
+key button Shift+Tab
+action ui_right --> uses input buttons: [[InputEventKey:32], [InputEventJoypadButton:33]]
+key button Right
+key button Right
+action ui_end --> uses input buttons: [[InputEventKey:41]]
+key button End
+action interact --> uses input buttons: [[InputEventKey:60]]
+key button K
+action rescue --> uses input buttons: [[InputEventKey:52], [InputEventJoypadButton:53]]
+key button R
+key button R
+action ui_left --> uses input buttons: [[InputEventKey:30], [InputEventJoypadButton:31]]
+key button Left
+key button Left
+action ui_up --> uses input buttons: [[InputEventKey:34], [InputEventJoypadButton:35]]
+key button Up
+key button Up
+action ui_page_down --> uses input buttons: [[InputEventKey:39]]
+key button PageDown
+action ui_cancel --> uses input buttons: [[InputEventKey:49]]
+key button Escape
+action ui_boost --> uses input buttons: [[InputEventKey:50], [InputEventJoypadButton:51]]
+key button Shift
+key button Shift
+action ui_select --> uses input buttons: [[InputEventKey:[...]
+
+--- Debugging process started ---
+Godot Engine v3.4.3.stable.official.242c05d12 - https://godotengine.org
+OpenGL ES 2.0 Renderer: GeForce GTX 1650/PCIe/SSE2
+OpenGL ES Batching: ON
+ 
+[toggle_lights, ui_focus_next, interact, ui_page_up, trim_down, ui_focus_prev, ui_right, ui_left, ui_down, rescue, ui_accept, trim_up, ui_cancel, ui_home, ui_up, ui_select, ui_page_down, ui_boost, ui_end]
+action toggle_lights --> uses input buttons: [[InputEventKey:54], [InputEventJoypadButton:55]]
+key button L
+Joypad button InputEventJoypadButton : button_index=4, pressed=false, pressure=0
+action ui_focus_next --> uses input buttons: [[InputEventKey:28]]
+key button Tab
+action interact --> uses input buttons: [[InputEventKey:60]]
+key button K
+action ui_page_up --> uses input buttons: [[InputEventKey:38]]
+key button PageUp
+action trim_down --> uses input buttons: [[InputEventJoypadMotion:56], [InputEventKey:57]]
+Joypad axis InputEventJoypadMotion : axis=2, axis_value=1
+key button 
+action ui_focus_prev --> uses input buttons: [[InputEventKey:29]]
+key button Shift+Tab
+action ui_right --> uses input buttons: [[InputEventKey:32], [InputEventJoypadButton:33]]
+key button Right
+Joypad button InputEventJoypadButton : button_index=15, pressed=false, pressure=0
+action ui_left --> uses input buttons: [[InputEventKey:30], [InputEventJoypadButton:31]]
+key button Left
+Joypad button InputEventJoypadButton : button_index=14, pressed=false, pressure=0
+action ui_down --> uses input buttons: [[InputEventKey:36], [InputEventJoypadButton:37]]
+key button Down
+Joypad button InputEventJoypadButton : button_index=13, pressed=false, pressure=0
+action rescue --> uses input buttons: [[InputEventKey:52], [InputEventJoypadButton:53]]
+key button R
+Joypad button InputEventJoypadButton : button_index=5, pressed=false, pressure=0
+action ui_accept --> uses input buttons: [[InputEventKey:45], [InputEventKey:46], [InputEventKey:47], [InputEventJoypadButton:48]]
+key button Enter
+key button Kp Enter
+key button Space
+Joypad button InputEventJoypadButton : button_index=1, pressed=false, pressure=0
+action trim_up --> uses input buttons: [[InputE[...]
+ [output overflow, print less text!]
+
+
+Beginning try for code;
+print("key pressed ", OS.get_scancode_string(one_list[0].get_scancode_with_modifiers()))
+
+Landed here:
+print("key pressed ", one_list[0].as_text())  ###The code on this line yields the outputs above....
+
+● int get_physical_scancode_with_modifiers() const
+
+Returns the physical scancode combined with modifier keys such as Shift or Alt. See also InputEventWithModifiers.
+
+To get a human-readable representation of the InputEventKey with modifiers, use OS.get_scancode_string(event.get_physical_scancode_with_modifiers()) where event is the InputEventKey.
+
+
+● int get_scancode_with_modifiers() const
+
+Returns the scancode combined with modifier keys such as Shift or Alt. See also InputEventWithModifiers.
+
+To get a human-readable representation of the InputEventKey with modifiers, use OS.get_scancode_string(event.get_scancode_with_modifiers()) where event is the InputEventKey.
+

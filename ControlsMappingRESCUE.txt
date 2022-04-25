@@ -1,0 +1,10 @@
+User control mapping actions;
+
+Steer rescue vessel - keyboard arrows, D-pad
+Motor boost - Shift Key, B button
+Trim Rescue Vessel bow/stern - U/I keys, Right Joystick R/L
+Search lights On/Off - L key, L1 button
+Rescue Commander Action - K key, 
+Select - Spacebar, 
+Accept - Enter key, 
+Cancel - Esc key, 
