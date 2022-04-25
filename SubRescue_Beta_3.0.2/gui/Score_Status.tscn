@@ -1,0 +1,233 @@
+[gd_scene format=2]
+
+[node name="Score_Status" type="Control"]
+anchor_right = 0.198
+anchor_bottom = 0.147
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 0.247986
+margin_bottom = -0.199997
+
+[node name="vbox" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 61.0
+
+[node name="score" type="HBoxContainer" parent="vbox"]
+margin_right = 260.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 200, 40 )
+
+[node name="scorelbl" type="ColorRect" parent="vbox/score"]
+margin_right = 80.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 80, 40 )
+color = Color( 0.67451, 0.666667, 0.666667, 1 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="score" type="Label" parent="vbox/score/scorelbl"]
+anchor_left = 0.278
+anchor_right = 0.828
+anchor_bottom = 1.0
+margin_left = -22.24
+margin_right = 13.76
+rect_min_size = Vector2( 80, 40 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "Career Score"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="score" type="ColorRect" parent="vbox/score"]
+margin_left = 84.0
+margin_right = 222.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 138, 40 )
+color = Color( 0.67451, 0.666667, 0.666667, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="vbox/score/score"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -65.0
+margin_top = -16.0
+margin_right = 65.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 130, 32 )
+color = Color( 0.0392157, 0.0352941, 0.0352941, 1 )
+
+[node name="game_score" type="Label" parent="vbox/score/score"]
+anchor_right = 0.611
+anchor_bottom = 1.0
+margin_right = -4.318
+rect_min_size = Vector2( 80, 40 )
+text = "9999"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="units" type="Label" parent="vbox/score/score"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -68.0
+margin_top = -19.0
+margin_right = 2.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 70, 40 )
+text = "Points"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="totsaves" type="HBoxContainer" parent="vbox"]
+margin_top = 44.0
+margin_right = 260.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 200, 40 )
+
+[node name="saveslbl" type="ColorRect" parent="vbox/totsaves"]
+margin_right = 80.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 80, 40 )
+color = Color( 0.67451, 0.666667, 0.666667, 1 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="saves" type="Label" parent="vbox/totsaves/saveslbl"]
+anchor_left = 0.278
+anchor_right = 0.828
+anchor_bottom = 1.0
+margin_left = -22.24
+margin_right = 13.76
+rect_min_size = Vector2( 80, 40 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "Career Souls Saved"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="score" type="ColorRect" parent="vbox/totsaves"]
+margin_left = 84.0
+margin_right = 222.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 138, 40 )
+color = Color( 0.67451, 0.666667, 0.666667, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="vbox/totsaves/score"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = -16.0
+margin_right = 66.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 130, 32 )
+color = Color( 0.0392157, 0.0352941, 0.0352941, 1 )
+
+[node name="game_saves" type="Label" parent="vbox/totsaves/score"]
+anchor_right = 0.444
+anchor_bottom = 1.0
+margin_right = 0.0799942
+rect_min_size = Vector2( 80, 40 )
+text = "99"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Units" type="Label" parent="vbox/totsaves/score"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -68.0
+margin_top = -20.0
+margin_right = 2.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 70, 40 )
+text = "Rescued"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="rescuetime" type="HBoxContainer" parent="vbox"]
+margin_top = 88.0
+margin_right = 260.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 200, 40 )
+
+[node name="timelbl" type="ColorRect" parent="vbox/rescuetime"]
+margin_right = 80.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 80, 40 )
+color = Color( 0.67451, 0.666667, 0.666667, 1 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="time" type="Label" parent="vbox/rescuetime/timelbl"]
+anchor_left = 0.278
+anchor_right = 0.828
+anchor_bottom = 1.0
+margin_left = -22.24
+margin_right = 13.76
+rect_min_size = Vector2( 80, 40 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "Rescue Timer"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="time" type="ColorRect" parent="vbox/rescuetime"]
+margin_left = 84.0
+margin_right = 222.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 138, 40 )
+color = Color( 0.67451, 0.666667, 0.666667, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="vbox/rescuetime/time"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = -16.0
+margin_right = 66.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 130, 32 )
+color = Color( 0.0392157, 0.0352941, 0.0352941, 1 )
+
+[node name="time" type="Label" parent="vbox/rescuetime/time"]
+anchor_right = 0.551
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_right = -3.038
+rect_min_size = Vector2( 65, 40 )
+text = "59:55"
+align = 1
+valign = 1
+
+[node name="timeunits" type="Label" parent="vbox/rescuetime/time"]
+anchor_left = 0.565
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.0299988
+rect_min_size = Vector2( 40, 40 )
+text = "min:sec"
+align = 1
+valign = 1

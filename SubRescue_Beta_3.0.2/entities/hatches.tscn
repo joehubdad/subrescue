@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 55.8099, 33.4941 )
+
+[node name="hatcharea" type="Area2D"]
+collision_layer = 32
+
+[node name="Contact" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )

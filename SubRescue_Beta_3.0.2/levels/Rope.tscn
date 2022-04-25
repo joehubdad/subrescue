@@ -1,0 +1,216 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://levels/Hose.gd" type="Script" id=1]
+[ext_resource path="res://levels/Segment.tscn" type="PackedScene" id=2]
+
+[node name="Rope" type="Node2D"]
+position = Vector2( 291, 11 )
+z_index = 1
+z_as_relative = false
+script = ExtResource( 1 )
+pull_factor = 1.0
+minimum_distance = 2
+priority_percent = 0.5
+
+[node name="Segments" type="Node2D" parent="."]
+position = Vector2( 121, 5 )
+z_index = 1
+z_as_relative = false
+
+[node name="Segment" parent="Segments" instance=ExtResource( 2 )]
+position = Vector2( 284, -16.7937 )
+rotation = -1.5708
+collision_mask = 33
+
+[node name="PinJoint2D" parent="Segments/Segment" index="1"]
+softness = 0.6
+
+[node name="Segment2" parent="Segments" instance=ExtResource( 2 )]
+position = Vector2( 249.789, -17 )
+rotation = -1.5708
+
+[node name="PinJoint2D" parent="Segments/Segment2" index="1"]
+node_b = NodePath("../../Segment")
+softness = 0.6
+
+[node name="Segment3" parent="Segments" instance=ExtResource( 2 )]
+position = Vector2( 215.789, -17 )
+rotation = -1.5708
+
+[node name="PinJoint2D" parent="Segments/Segment3" index="1"]
+node_b = NodePath("../../Segment2")
+softness = 0.6
+
+[node name="Segment4" parent="Segments" instance=ExtResource( 2 )]
+position = Vector2( 181.789, -17 )
+rotation = -1.5708
+
+[node name="PinJoint2D" parent="Segments/Segment4" index="1"]
+node_b = NodePath("../../Segment3")
+softness = 0.6
+
+[node name="Segment5" parent="Segments" instance=ExtResource( 2 )]
+position = Vector2( 147.789, -17 )
+rotation = -1.5708
+
+[node name="PinJoint2D" parent="Segments/Segment5" index="1"]
+node_b = NodePath("../../Segment4")
+softness = 0.6
+
+[node name="Segment6" parent="Segments" instance=ExtResource( 2 )]
+position = Vector2( 113.789, -17 )
+rotation = -1.5708
+
+[node name="PinJoint2D" parent="Segments/Segment6" index="1"]
+node_b = NodePath("../../Segment5")
+softness = 0.6
+
+[node name="Segment7" parent="Segments" instance=ExtResource( 2 )]
+position = Vector2( 79.7889, -17 )
+rotation = -1.5708
+
+[node name="PinJoint2D" parent="Segments/Segment7" index="1"]
+node_b = NodePath("../../Segment6")
+softness = 0.6
+
+[node name="Segment8" parent="Segments" instance=ExtResource( 2 )]
+position = Vector2( 45.7889, -17 )
+rotation = -1.5708
+
+[node name="PinJoint2D" parent="Segments/Segment8" index="1"]
+node_b = NodePath("../../Segment7")
+softness = 0.6
+
+[node name="Segment9" parent="Segments" instance=ExtResource( 2 )]
+position = Vector2( 13, -17 )
+rotation = -1.5708
+
+[node name="PinJoint2D" parent="Segments/Segment9" index="1"]
+node_b = NodePath("../../Segment8")
+softness = 0.6
+
+[node name="South_Pole" parent="Segments/Segment9" index="4"]
+position = Vector2( 0.235972, 16.0347 )
+
+[node name="Segment10" parent="Segments" instance=ExtResource( 2 )]
+position = Vector2( -21, -17 )
+rotation = -1.5708
+
+[node name="PinJoint2D" parent="Segments/Segment10" index="1"]
+node_b = NodePath("../../Segment9")
+softness = 0.6
+
+[node name="South_Pole" parent="Segments/Segment10" index="4"]
+position = Vector2( 1.17984, 18.6518 )
+
+[node name="Segment11" parent="Segments" instance=ExtResource( 2 )]
+position = Vector2( -55, -17 )
+rotation = -1.5708
+
+[node name="PinJoint2D" parent="Segments/Segment11" index="1"]
+node_b = NodePath("../../Segment10")
+softness = 0.6
+
+[node name="Segment12" parent="Segments" instance=ExtResource( 2 )]
+position = Vector2( -89, -17 )
+rotation = -1.5708
+
+[node name="PinJoint2D" parent="Segments/Segment12" index="1"]
+node_b = NodePath("../../Segment11")
+softness = 0.6
+
+[node name="Segment13" parent="Segments" instance=ExtResource( 2 )]
+position = Vector2( -123, -17 )
+rotation = -1.5708
+
+[node name="PinJoint2D" parent="Segments/Segment13" index="1"]
+node_b = NodePath("../../Segment12")
+softness = 2.0
+
+[node name="Segment14" parent="Segments" instance=ExtResource( 2 )]
+position = Vector2( -157, -17 )
+rotation = -1.5708
+
+[node name="PinJoint2D" parent="Segments/Segment14" index="1"]
+node_b = NodePath("../../Segment13")
+softness = 0.6
+
+[node name="Segment15" parent="Segments" instance=ExtResource( 2 )]
+position = Vector2( -191, -17 )
+rotation = -1.5708
+
+[node name="PinJoint2D" parent="Segments/Segment15" index="1"]
+node_b = NodePath("../../Segment14")
+softness = 0.6
+
+[node name="Segment16" parent="Segments" instance=ExtResource( 2 )]
+position = Vector2( -225, -17 )
+rotation = -1.5708
+
+[node name="PinJoint2D" parent="Segments/Segment16" index="1"]
+node_b = NodePath("../../Segment15")
+softness = 2.0
+
+[node name="Segment17" parent="Segments" instance=ExtResource( 2 )]
+position = Vector2( -259, -17 )
+rotation = -1.5708
+
+[node name="PinJoint2D" parent="Segments/Segment17" index="1"]
+node_b = NodePath("../../Segment16")
+softness = 2.0
+
+[node name="Segment18" parent="Segments" instance=ExtResource( 2 )]
+position = Vector2( -293, -17 )
+rotation = -1.5708
+
+[node name="PinJoint2D" parent="Segments/Segment18" index="1"]
+node_b = NodePath("../../Segment17")
+softness = 2.0
+
+[node name="Segment19" parent="Segments" instance=ExtResource( 2 )]
+position = Vector2( -327, -17 )
+rotation = -1.5708
+
+[node name="PinJoint2D" parent="Segments/Segment19" index="1"]
+position = Vector2( -6.10352e-05, 17 )
+node_b = NodePath("../../Segment18")
+softness = 2.0
+
+[node name="Segment20" parent="Segments" instance=ExtResource( 2 )]
+position = Vector2( -361, -17 )
+rotation = -1.5708
+
+[node name="PinJoint2D" parent="Segments/Segment20" index="1"]
+node_b = NodePath("../../Segment19")
+softness = 2.0
+
+[node name="AnchorSegment" parent="Segments" instance=ExtResource( 2 )]
+position = Vector2( -395, -17 )
+rotation = -1.5708
+
+[node name="PinJoint2D" parent="Segments/AnchorSegment" index="1"]
+position = Vector2( -6.10352e-05, 17 )
+node_b = NodePath("../../Segment20")
+softness = 2.0
+
+[editable path="Segments/Segment"]
+[editable path="Segments/Segment2"]
+[editable path="Segments/Segment3"]
+[editable path="Segments/Segment4"]
+[editable path="Segments/Segment5"]
+[editable path="Segments/Segment6"]
+[editable path="Segments/Segment7"]
+[editable path="Segments/Segment8"]
+[editable path="Segments/Segment9"]
+[editable path="Segments/Segment10"]
+[editable path="Segments/Segment11"]
+[editable path="Segments/Segment12"]
+[editable path="Segments/Segment13"]
+[editable path="Segments/Segment14"]
+[editable path="Segments/Segment15"]
+[editable path="Segments/Segment16"]
+[editable path="Segments/Segment17"]
+[editable path="Segments/Segment18"]
+[editable path="Segments/Segment19"]
+[editable path="Segments/Segment20"]
+[editable path="Segments/AnchorSegment"]

@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://gui/DialogPopups.gd" type="Script" id=1]
+[ext_resource path="res://SFX/Well Done CCBY3.ogg" type="AudioStream" id=2]
+[ext_resource path="res://SFX/133008__cosmicd__annulet-of-absorption.wav" type="AudioStream" id=3]
+[ext_resource path="res://gui/offload2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://gui/complete2.tscn" type="PackedScene" id=5]
+
+[node name="rescuequeery" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="sortiecomplete" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="missioncomplete" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="offload2" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="complete2" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[connection signal="pressed" from="offload2/offloadconfirm" to="." method="_on_offloadconfirm_pressed"]
+[connection signal="pressed" from="offload2/canxoffload" to="." method="_on_canxoffload_pressed"]
+[connection signal="pressed" from="complete2/completeconfirm" to="." method="_on_completeconfirm_pressed"]
+[connection signal="pressed" from="complete2/canxrescue" to="." method="_on_canxrescue_pressed"]
+
+[editable path="offload2"]
+[editable path="complete2"]

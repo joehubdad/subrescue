@@ -1,0 +1,286 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://levels/GenerateLevels.gd" type="Script" id=1]
+[ext_resource path="res://art/sky1.png" type="Texture" id=2]
+[ext_resource path="res://art/Ocean.png" type="Texture" id=3]
+[ext_resource path="res://art/voodoo_cactus_underwater.jpg" type="Texture" id=4]
+[ext_resource path="res://entities/OceanFloor.tres" type="TileSet" id=5]
+[ext_resource path="res://entities/RescueSub.tscn" type="PackedScene" id=6]
+[ext_resource path="res://entities/VOO.tscn" type="PackedScene" id=7]
+[ext_resource path="res://entities/HoseScope.tscn" type="PackedScene" id=8]
+[ext_resource path="res://entities/DISSUB_two.tscn" type="PackedScene" id=9]
+[ext_resource path="res://gui/HUD.tscn" type="PackedScene" id=10]
+[ext_resource path="res://SFX/deptheffect.tscn" type="PackedScene" id=11]
+[ext_resource path="res://gui/TransitionIn.tscn" type="PackedScene" id=12]
+[ext_resource path="res://SFX/waveslapfile.wav" type="AudioStream" id=13]
+[ext_resource path="res://SFX/underwater theme 2nd variation (my preferred).ogg" type="AudioStream" id=14]
+[ext_resource path="res://SFX/ambient2(Nautilus).mp3" type="AudioStream" id=15]
+[ext_resource path="res://levels/currentshallow.gd" type="Script" id=16]
+[ext_resource path="res://levels/currentdeep.gd" type="Script" id=17]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 955, 721.202 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1027, 115.5 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 1025, 685.471 )
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 240.0
+height = 2706.0
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 959.995
+height = 1456.0
+
+[node name="GameLevel" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -78.0, -102.0 ]
+}
+
+[node name="HUD" parent="." instance=ExtResource( 10 )]
+
+[node name="SkyZone" type="Area2D" parent="."]
+z_index = -2
+collision_layer = 128
+monitorable = false
+gravity = 150.0
+
+[node name="Sky" type="Sprite" parent="SkyZone"]
+show_behind_parent = true
+position = Vector2( -5, -1353 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SkyZone"]
+position = Vector2( 954, -823.202 )
+shape = SubResource( 2 )
+
+[node name="SurfZone" type="Area2D" parent="."]
+show_behind_parent = true
+z_index = -1
+collision_layer = 4
+monitorable = false
+priority = 1.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="SurfSounds" type="AudioStreamPlayer2D" parent="SurfZone"]
+position = Vector2( 999.9, 20 )
+stream = ExtResource( 13 )
+area_mask = 4
+
+[node name="Surface" type="Sprite" parent="SurfZone"]
+show_behind_parent = true
+position = Vector2( 0, -456 )
+scale = Vector2( 4.26667, 2.11574 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SurfZone"]
+position = Vector2( 1021, 13.5 )
+shape = SubResource( 1 )
+
+[node name="DeepZone" type="Area2D" parent="."]
+z_index = -2
+collision_layer = 8
+monitorable = false
+
+[node name="Deepsounds1" type="AudioStreamPlayer2D" parent="DeepZone"]
+position = Vector2( 1003.37, 823.74 )
+stream = ExtResource( 15 )
+area_mask = 8
+
+[node name="Deepsounds2" type="AudioStreamPlayer2D" parent="DeepZone"]
+position = Vector2( 1003.37, 823.74 )
+stream = ExtResource( 14 )
+area_mask = 8
+
+[node name="OceanDeep" type="Sprite" parent="DeepZone"]
+light_mask = 2
+z_index = -1
+texture = ExtResource( 4 )
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeepZone"]
+position = Vector2( 1023, 815.471 )
+shape = SubResource( 3 )
+
+[node name="VOO" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1560, -155 )
+
+[node name="DeckReel" parent="VOO" index="5"]
+z_index = 5
+
+[node name="PinJoint2D" parent="VOO/DeckReel" index="2"]
+node_b = NodePath("../../../HoseScope/Rope/Segments/AnchorSegment")
+
+[node name="HoseScope" parent="." instance=ExtResource( 8 )]
+position = Vector2( 508, -734 )
+
+[node name="PinJoint2D" parent="HoseScope/Rope4/Segments/Segment" index="1"]
+node_b = NodePath("../../../../../RescueSub")
+
+[node name="RescueSub" parent="." instance=ExtResource( 6 )]
+position = Vector2( 757, -349 )
+scale = Vector2( 1.05, 0.703034 )
+z_index = 0
+
+[node name="DISSUB" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1427, 487 )
+z_as_relative = true
+
+[node name="TileMap" type="TileMap" parent="."]
+light_mask = 3
+tile_set = ExtResource( 5 )
+collision_layer = 16
+collision_mask = 35
+format = 1
+
+[node name="deptheffect" parent="." instance=ExtResource( 11 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 2048.0
+margin_bottom = 1536.0
+
+[node name="TransitionIn" parent="." instance=ExtResource( 12 )]
+layer = 2
+
+[node name="currentshallow" type="Area2D" parent="."]
+position = Vector2( 1467, 1097 )
+collision_layer = 4096
+collision_mask = 3
+space_override = 1
+script = ExtResource( 16 )
+
+[node name="regionshape" type="CollisionShape2D" parent="currentshallow"]
+position = Vector2( -57, -683 )
+rotation = 1.5708
+shape = SubResource( 4 )
+
+[node name="currentdeep" type="Area2D" parent="."]
+position = Vector2( 1454, 1628 )
+collision_layer = 4096
+collision_mask = 3
+space_override = 1
+script = ExtResource( 17 )
+
+[node name="regionshape" type="CollisionShape2D" parent="currentdeep"]
+position = Vector2( 15, 27 )
+rotation = 1.5708
+shape = SubResource( 5 )
+
+[connection signal="body_entered" from="SkyZone" to="RescueSub" method="_on_SkyZone_body_entered"]
+[connection signal="body_exited" from="SkyZone" to="RescueSub" method="_on_SkyZone_body_exited"]
+[connection signal="body_entered" from="SurfZone" to="RescueSub" method="_on_SurfZone_body_entered"]
+[connection signal="body_exited" from="SurfZone" to="RescueSub" method="_on_SurfZone_body_exited"]
+[connection signal="body_entered" from="DeepZone" to="RescueSub" method="_on_DeepZone_body_entered"]
+[connection signal="body_exited" from="DeepZone" to="RescueSub" method="_on_DeepZone_body_exited"]
+[connection signal="rv_state_changed" from="RescueSub" to="HUD" method="_on_RescueSub_rv_state_changed"]
+[connection signal="saved" from="RescueSub" to="HUD" method="_on_RescueSub_saved"]
+[connection signal="demated" from="DISSUB" to="HUD" method="_on_DISSUB_demated"]
+[connection signal="demated" from="DISSUB" to="RescueSub" method="_on_DISSUB_demated"]
+[connection signal="mated" from="DISSUB" to="HUD" method="_on_DISSUB_mated"]
+[connection signal="mated" from="DISSUB" to="RescueSub" method="_on_DISSUB_mated"]
+[connection signal="body_entered" from="currentshallow" to="currentshallow" method="_on_currentshallow_body_entered"]
+[connection signal="body_exited" from="currentshallow" to="currentshallow" method="_on_currentshallow_body_exited"]
+[connection signal="body_entered" from="currentdeep" to="currentdeep" method="_on_currentdeep_body_entered"]
+[connection signal="body_exited" from="currentdeep" to="currentdeep" method="_on_currentdeep_body_exited"]
+
+[editable path="HUD"]
+[editable path="VOO"]
+[editable path="VOO/DeckReel"]
+[editable path="HoseScope"]
+[editable path="HoseScope/Rope"]
+[editable path="HoseScope/Rope/Segments/Segment"]
+[editable path="HoseScope/Rope/Segments/Segment2"]
+[editable path="HoseScope/Rope/Segments/Segment3"]
+[editable path="HoseScope/Rope/Segments/Segment4"]
+[editable path="HoseScope/Rope/Segments/Segment5"]
+[editable path="HoseScope/Rope/Segments/Segment6"]
+[editable path="HoseScope/Rope/Segments/Segment7"]
+[editable path="HoseScope/Rope/Segments/Segment8"]
+[editable path="HoseScope/Rope/Segments/Segment9"]
+[editable path="HoseScope/Rope/Segments/Segment10"]
+[editable path="HoseScope/Rope/Segments/Segment11"]
+[editable path="HoseScope/Rope/Segments/Segment12"]
+[editable path="HoseScope/Rope/Segments/Segment13"]
+[editable path="HoseScope/Rope/Segments/Segment14"]
+[editable path="HoseScope/Rope/Segments/Segment15"]
+[editable path="HoseScope/Rope/Segments/Segment16"]
+[editable path="HoseScope/Rope/Segments/Segment17"]
+[editable path="HoseScope/Rope/Segments/Segment18"]
+[editable path="HoseScope/Rope/Segments/Segment19"]
+[editable path="HoseScope/Rope/Segments/Segment20"]
+[editable path="HoseScope/Rope/Segments/AnchorSegment"]
+[editable path="HoseScope/Rope2"]
+[editable path="HoseScope/Rope2/Segments/Segment"]
+[editable path="HoseScope/Rope2/Segments/Segment2"]
+[editable path="HoseScope/Rope2/Segments/Segment3"]
+[editable path="HoseScope/Rope2/Segments/Segment4"]
+[editable path="HoseScope/Rope2/Segments/Segment5"]
+[editable path="HoseScope/Rope2/Segments/Segment6"]
+[editable path="HoseScope/Rope2/Segments/Segment7"]
+[editable path="HoseScope/Rope2/Segments/Segment8"]
+[editable path="HoseScope/Rope2/Segments/Segment9"]
+[editable path="HoseScope/Rope2/Segments/Segment10"]
+[editable path="HoseScope/Rope2/Segments/Segment11"]
+[editable path="HoseScope/Rope2/Segments/Segment12"]
+[editable path="HoseScope/Rope2/Segments/Segment13"]
+[editable path="HoseScope/Rope2/Segments/Segment14"]
+[editable path="HoseScope/Rope2/Segments/Segment15"]
+[editable path="HoseScope/Rope2/Segments/Segment16"]
+[editable path="HoseScope/Rope2/Segments/Segment17"]
+[editable path="HoseScope/Rope2/Segments/Segment18"]
+[editable path="HoseScope/Rope2/Segments/Segment19"]
+[editable path="HoseScope/Rope2/Segments/Segment20"]
+[editable path="HoseScope/Rope2/Segments/AnchorSegment"]
+[editable path="HoseScope/Rope3"]
+[editable path="HoseScope/Rope3/Segments/Segment"]
+[editable path="HoseScope/Rope3/Segments/Segment2"]
+[editable path="HoseScope/Rope3/Segments/Segment3"]
+[editable path="HoseScope/Rope3/Segments/Segment4"]
+[editable path="HoseScope/Rope3/Segments/Segment5"]
+[editable path="HoseScope/Rope3/Segments/Segment6"]
+[editable path="HoseScope/Rope3/Segments/Segment7"]
+[editable path="HoseScope/Rope3/Segments/Segment8"]
+[editable path="HoseScope/Rope3/Segments/Segment9"]
+[editable path="HoseScope/Rope3/Segments/Segment10"]
+[editable path="HoseScope/Rope3/Segments/Segment11"]
+[editable path="HoseScope/Rope3/Segments/Segment12"]
+[editable path="HoseScope/Rope3/Segments/Segment13"]
+[editable path="HoseScope/Rope3/Segments/Segment14"]
+[editable path="HoseScope/Rope3/Segments/Segment15"]
+[editable path="HoseScope/Rope3/Segments/Segment16"]
+[editable path="HoseScope/Rope3/Segments/Segment17"]
+[editable path="HoseScope/Rope3/Segments/Segment18"]
+[editable path="HoseScope/Rope3/Segments/Segment19"]
+[editable path="HoseScope/Rope3/Segments/Segment20"]
+[editable path="HoseScope/Rope3/Segments/AnchorSegment"]
+[editable path="HoseScope/Rope4"]
+[editable path="HoseScope/Rope4/Segments/Segment"]
+[editable path="HoseScope/Rope4/Segments/Segment2"]
+[editable path="HoseScope/Rope4/Segments/Segment3"]
+[editable path="HoseScope/Rope4/Segments/Segment4"]
+[editable path="HoseScope/Rope4/Segments/Segment5"]
+[editable path="HoseScope/Rope4/Segments/Segment6"]
+[editable path="HoseScope/Rope4/Segments/Segment7"]
+[editable path="HoseScope/Rope4/Segments/Segment8"]
+[editable path="HoseScope/Rope4/Segments/Segment9"]
+[editable path="HoseScope/Rope4/Segments/Segment10"]
+[editable path="HoseScope/Rope4/Segments/Segment11"]
+[editable path="HoseScope/Rope4/Segments/Segment12"]
+[editable path="HoseScope/Rope4/Segments/Segment13"]
+[editable path="HoseScope/Rope4/Segments/Segment14"]
+[editable path="HoseScope/Rope4/Segments/Segment15"]
+[editable path="HoseScope/Rope4/Segments/Segment16"]
+[editable path="HoseScope/Rope4/Segments/Segment17"]
+[editable path="HoseScope/Rope4/Segments/Segment18"]
+[editable path="HoseScope/Rope4/Segments/Segment19"]
+[editable path="HoseScope/Rope4/Segments/Segment20"]
+[editable path="HoseScope/Rope4/Segments/AnchorSegment"]
+[editable path="RescueSub"]

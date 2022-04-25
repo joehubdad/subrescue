@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://art/spot.png" type="Texture" id=1]
+
+[node name="spotlight" type="CanvasLayer"]
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 514, 311 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+texture_scale = 5.0
+energy = 1.25
+range_layer_max = 1

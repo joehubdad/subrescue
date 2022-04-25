@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/wave_03_cc0-11505__transitking__wavesound.ogg-bf364f235229efc08c9c4ca482d616bd.oggstr"
+
+[deps]
+
+source_file="res://SFX/wave_03_cc0-11505__transitking__wavesound.ogg"
+dest_files=[ "res://.import/wave_03_cc0-11505__transitking__wavesound.ogg-bf364f235229efc08c9c4ca482d616bd.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

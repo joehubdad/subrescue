@@ -1,0 +1,187 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://entities/OceanFloor.tres" type="TileSet" id=1]
+
+[node name="mountain" type="Node2D"]
+__meta__ = {
+"_edit_horizontal_guides_": [ 332.0 ]
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_top = -13.0
+margin_right = 271.0
+margin_bottom = 477.0
+color = Color( 0.00392157, 0.00784314, 0.0196078, 1 )
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+margin_left = 245.0
+margin_top = 155.0
+margin_right = 343.0
+margin_bottom = 480.0
+color = Color( 0.00392157, 0.00784314, 0.0196078, 1 )
+
+[node name="ColorRect5" type="ColorRect" parent="."]
+margin_left = 372.0
+margin_top = 182.0
+margin_right = 1040.0
+margin_bottom = 296.0
+color = Color( 0.00392157, 0.00784314, 0.0196078, 1 )
+
+[node name="ColorRect6" type="ColorRect" parent="."]
+margin_left = 335.0
+margin_top = 247.0
+margin_right = 1166.0
+margin_bottom = 497.0
+color = Color( 0.00392157, 0.00784314, 0.0196078, 1 )
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+margin_left = 1035.0
+margin_top = 316.0
+margin_right = 3081.0
+margin_bottom = 551.0
+color = Color( 0.00392157, 0.00784314, 0.0196078, 1 )
+
+[node name="ColorRect16" type="ColorRect" parent="."]
+margin_left = 1471.0
+margin_top = 186.0
+margin_right = 2828.0
+margin_bottom = 339.0
+color = Color( 0.00392157, 0.00784314, 0.0196078, 1 )
+
+[node name="ColorRect17" type="ColorRect" parent="."]
+margin_left = 1526.0
+margin_top = 82.0
+margin_right = 2763.0
+margin_bottom = 206.0
+color = Color( 0.00392157, 0.00784314, 0.0196078, 1 )
+
+[node name="ColorRect18" type="ColorRect" parent="."]
+margin_left = 1590.0
+margin_top = -13.0
+margin_right = 2696.0
+margin_bottom = 206.0
+color = Color( 0.00392157, 0.00784314, 0.0196078, 1 )
+
+[node name="ColorRect19" type="ColorRect" parent="."]
+margin_left = 1592.0
+margin_top = -94.0
+margin_right = 2243.0
+margin_bottom = 15.0
+color = Color( 0.00392157, 0.00784314, 0.0196078, 1 )
+
+[node name="ColorRect20" type="ColorRect" parent="."]
+margin_left = 1647.0
+margin_top = -168.0
+margin_right = 2247.0
+margin_bottom = 15.0
+color = Color( 0.00392157, 0.00784314, 0.0196078, 1 )
+
+[node name="ColorRect21" type="ColorRect" parent="."]
+margin_left = 1715.0
+margin_top = -293.0
+margin_right = 2190.0
+margin_bottom = -29.0
+color = Color( 0.00392157, 0.00784314, 0.0196078, 1 )
+
+[node name="ColorRect22" type="ColorRect" parent="."]
+margin_left = 1778.0
+margin_top = -432.0
+margin_right = 2156.0
+margin_bottom = 123.0
+color = Color( 0.00392157, 0.00784314, 0.0196078, 1 )
+
+[node name="ColorRect23" type="ColorRect" parent="."]
+margin_left = 1844.0
+margin_top = -246.0
+margin_right = 2351.0
+margin_bottom = 892.0
+color = Color( 0.00392157, 0.00784314, 0.0196078, 1 )
+
+[node name="ColorRect7" type="ColorRect" parent="."]
+margin_left = 3200.0
+margin_top = -109.0
+margin_right = 3869.0
+margin_bottom = 550.0
+color = Color( 0.00392157, 0.00784314, 0.0196078, 1 )
+
+[node name="ColorRect8" type="ColorRect" parent="."]
+margin_left = 3681.0
+margin_top = -705.0
+margin_right = 4546.0
+margin_bottom = 588.0
+color = Color( 0.00392157, 0.00784314, 0.0196078, 1 )
+
+[node name="ColorRect24" type="ColorRect" parent="."]
+margin_left = 4384.0
+margin_top = -866.0
+margin_right = 4546.0
+margin_bottom = 588.0
+color = Color( 0.00392157, 0.00784314, 0.0196078, 1 )
+
+[node name="ColorRect9" type="ColorRect" parent="."]
+margin_left = 3059.0
+margin_top = 213.0
+margin_right = 3514.0
+margin_bottom = 551.0
+color = Color( 0.00392157, 0.00784314, 0.0196078, 1 )
+
+[node name="ColorRect10" type="ColorRect" parent="."]
+margin_left = 3115.0
+margin_top = 82.0
+margin_right = 3275.0
+margin_bottom = 260.0
+color = Color( 0.00392157, 0.00784314, 0.0196078, 1 )
+
+[node name="ColorRect11" type="ColorRect" parent="."]
+margin_left = 3518.0
+margin_top = -361.0
+margin_right = 3712.0
+margin_bottom = -89.0
+color = Color( 0.00392157, 0.00784314, 0.0196078, 1 )
+
+[node name="ColorRect15" type="ColorRect" parent="."]
+margin_left = 3578.0
+margin_top = -490.0
+margin_right = 3712.0
+margin_bottom = -89.0
+color = Color( 0.00392157, 0.00784314, 0.0196078, 1 )
+
+[node name="ColorRect12" type="ColorRect" parent="."]
+margin_left = 3605.0
+margin_top = -631.0
+margin_right = 3894.0
+margin_bottom = -307.0
+color = Color( 0.00392157, 0.00784314, 0.0196078, 1 )
+
+[node name="ColorRect13" type="ColorRect" parent="."]
+margin_left = 3440.0
+margin_top = -235.0
+margin_right = 3675.0
+margin_bottom = 6.0
+color = Color( 0.00392157, 0.00784314, 0.0196078, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_left = 507.0
+margin_top = 97.0
+margin_right = 905.0
+margin_bottom = 287.0
+color = Color( 0.00392157, 0.00784314, 0.0196078, 1 )
+
+[node name="ColorRect14" type="ColorRect" parent="."]
+margin_left = 569.0
+margin_top = -40.0
+margin_right = 730.0
+margin_bottom = 170.0
+color = Color( 0.00392157, 0.00784314, 0.0196078, 1 )
+
+[node name="TileMap" type="TileMap" parent="."]
+light_mask = 3
+tile_set = ExtResource( 1 )
+cell_custom_transform = Transform2D( 64, 0, 0, 64, -0.583, 0.583 )
+collision_layer = 16
+collision_mask = 35
+format = 1
+tile_data = PoolIntArray( -1048508, -2147483647, 0, -917437, -2147483647, 0, -786376, -2147483647, 0, -786375, 536870912, 0, -786371, 536870912, 0, -786368, 536870912, 0, -655305, -2147483647, 0, -524260, -1610612733, 0, -524258, -1610612733, 0, -524256, -2147483645, 0, -524234, -2147483647, 0, -458726, -2147483647, 0, -458719, -1610612735, 0, -393163, -2147483647, 0, -327655, -2147483647, 0, -327646, -1610612735, 0, -262092, -2147483647, 0, -196600, -2147483647, 0, -196598, -1610612735, 0, -196584, -2147483647, 0, -196573, -1610612735, 0, -196559, -2147483647, 0, -196557, -2147483645, 0, -65536, 0, 0, -65529, -2147483647, 0, -65525, -1610612735, 0, -65513, -2147483647, 0, -65501, 0, 0, -65498, 0, 0, -65494, -1610612735, 0, -65488, -2147483647, 0, 4, -1610612735, 0, 12, 536870913, 0, 65542, -2147483647, 0, 65550, 536870913, 0, 65558, -2147483647, 0, 65579, -1610612735, 0, 65583, -2147483647, 0, 131077, -1610612735, 0, 131078, -1610612733, 0, 131088, 536870913, 0, 196626, 536870913, 0, 196629, -1610612733, 0, 196652, -1610612735, 0, 196654, -2147483647, 0, 262164, 536870912, 0, 262189, -1610612733, 0 )
+__meta__ = {
+"_editor_description_": ""
+}

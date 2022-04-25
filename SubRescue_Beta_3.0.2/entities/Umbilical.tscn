@@ -1,0 +1,69 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://entities/hoseLength.tscn" type="PackedScene" id=1]
+[ext_resource path="res://entities/Umbilical.gd" type="Script" id=2]
+
+[node name="Umbilical" type="Node2D"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_vertical_guides_": [ 28.0098 ]
+}
+
+[node name="Hose" type="Node2D" parent="."]
+position = Vector2( 2.5, 0.5 )
+
+[node name="Length" parent="Hose" instance=ExtResource( 1 )]
+position = Vector2( 13.9836, -0.112595 )
+rotation = -1.5708
+mass = 0.0816327
+
+[node name="PinJoint2D" parent="Hose/Length" index="1"]
+node_b = NodePath("../../Length2")
+
+[node name="Length2" parent="Hose" instance=ExtResource( 1 )]
+position = Vector2( 41.8242, -0.112595 )
+rotation = -1.5708
+
+[node name="Length3" parent="Hose" instance=ExtResource( 1 )]
+position = Vector2( 69.8875, -0.112595 )
+rotation = -1.5708
+
+[node name="Length4" parent="Hose" instance=ExtResource( 1 )]
+position = Vector2( 97.9633, -0.112595 )
+rotation = -1.5708
+
+[node name="Length5" parent="Hose" instance=ExtResource( 1 )]
+position = Vector2( 126.039, -0.112595 )
+rotation = -1.5708
+
+[node name="Length6" parent="Hose" instance=ExtResource( 1 )]
+position = Vector2( 154.115, -0.112595 )
+rotation = -1.5708
+
+[node name="Length7" parent="Hose" instance=ExtResource( 1 )]
+position = Vector2( 181.926, -0.37746 )
+rotation = -1.5708
+
+[node name="Length8" parent="Hose" instance=ExtResource( 1 )]
+position = Vector2( 210.157, -0.0116539 )
+rotation = -1.5708
+
+[node name="Length9" parent="Hose" instance=ExtResource( 1 )]
+position = Vector2( 238.117, 0 )
+rotation = -1.5708
+
+[node name="Length10" parent="Hose" instance=ExtResource( 1 )]
+position = Vector2( 266.287, 0 )
+rotation = -1.5708
+
+[node name="Length11" parent="Hose" instance=ExtResource( 1 )]
+position = Vector2( 294.247, 0 )
+rotation = -1.5708
+
+[node name="Length12" parent="Hose" instance=ExtResource( 1 )]
+position = Vector2( 322.417, -0.420448 )
+rotation = -1.5708
+
+[node name="Player1_Joint" type="PinJoint2D" parent="."]
+
+[editable path="Hose/Length"]

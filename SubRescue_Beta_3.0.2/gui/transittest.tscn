@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://gui/TransitionIn.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gui/transittest.gd" type="Script" id=3]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="transitionbutton" type="Button" parent="."]
+modulate = Color( 0.0823529, 0.890196, 0.909804, 1 )
+margin_left = 406.0
+margin_top = 301.0
+margin_right = 663.0
+margin_bottom = 442.0
+action_mode = 0
+text = "Transition"
+
+[node name="TransitionIn" parent="." instance=ExtResource( 2 )]
+follow_viewport_enable = true
+
+[connection signal="pressed" from="transitionbutton" to="." method="_on_transitionbutton_pressed"]

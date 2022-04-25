@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://entities/OceanFloor.tres" type="TileSet" id=1]
+[ext_resource path="res://art/Underwater Mountains.png" type="Texture" id=2]
+[ext_resource path="res://entities/RescueSub.tscn" type="PackedScene" id=3]
+[ext_resource path="res://art/water1.png" type="Texture" id=4]
+[ext_resource path="res://art/sky1.png" type="Texture" id=5]
+[ext_resource path="res://entities/DISSUB_two.tscn" type="PackedScene" id=6]
+[ext_resource path="res://entities/VOO.tscn" type="PackedScene" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1310.39, 841.495 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 922.955, 46.392 )
+
+[node name="Level1" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+collision_layer = 16
+format = 1
+tile_data = PoolIntArray( 65536, -1610612736, 0, 65562, -1073741824, 0, 262144, -1610612736, 0, 262170, -1073741824, 0, 524288, -1610612736, 0, 524314, -1073741824, 0, 786432, -1610612736, 0, 786458, -1073741824, 0, 1048576, -1610612736, 0, 1048602, -1073741824, 0, 1310720, -1610612736, 0, 1310746, -1073741824, 0, 1507328, 536870913, 0, 1507352, 1, 0, 1572866, 0, 0, 1572869, 0, 0, 1572873, 0, 0, 1572877, 0, 0, 1572881, 0, 0, 1572884, 0, 0 )
+
+[node name="Skyarea" type="Area2D" parent="."]
+gravity = 250.0
+collision_layer = 2
+
+[node name="skysensor" type="CollisionShape2D" parent="Skyarea"]
+position = Vector2( 832, -640 )
+scale = Vector2( 0.872696, 0.608441 )
+shape = SubResource( 1 )
+
+[node name="Sky" type="Sprite" parent="Skyarea"]
+position = Vector2( 840.431, -397.335 )
+scale = Vector2( 0.872696, 0.608441 )
+texture = ExtResource( 5 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+show_behind_parent = true
+position = Vector2( 928, 1152 )
+scale = Vector2( 2.44, 1.92 )
+texture = ExtResource( 2 )
+
+[node name="Surf" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="Surface" type="Sprite" parent="Surf"]
+show_behind_parent = true
+position = Vector2( 842.218, -2.98534 )
+scale = Vector2( 1.22764, 0.216149 )
+texture = ExtResource( 4 )
+
+[node name="SurfDetector" type="CollisionShape2D" parent="Surf"]
+position = Vector2( 864.761, 32.8342 )
+shape = SubResource( 2 )
+
+[node name="Ocean" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="RescueSub" parent="." instance=ExtResource( 3 )]
+position = Vector2( 508.247, -412.278 )
+
+[node name="DISSUB" parent="." instance=ExtResource( 6 )]
+position = Vector2( 832, 960 )
+
+[node name="VOO" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1344, -64 )
+
+[connection signal="body_entered" from="Skyarea" to="RescueSub" method="_on_Skyarea_body_entered"]
+[connection signal="body_exited" from="Skyarea" to="RescueSub" method="_on_Skyarea_body_exited"]
+[connection signal="body_entered" from="Surf" to="RescueSub" method="_on_Surf_body_entered"]
+[connection signal="body_exited" from="Surf" to="RescueSub" method="_on_Surf_body_exited"]

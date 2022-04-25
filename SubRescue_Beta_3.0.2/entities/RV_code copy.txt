@@ -1,0 +1,173 @@
+extends KinematicBody2D
+
+const FLOOR_NORMAL: = Vector2.UP
+
+signal saved(crew_saved)
+
+export var motor_speed: = Vector2(150.0, 150.0)  #x,y component speeds when using motors
+var boost_speed: = Vector2(250.0,250.0)
+export var gravity_force: = Vector2(0,98)  # gravity velocity acting on sub
+export var bouyant_force: = Vector2() # bouyant force velocity of sub
+
+var pull := Vector2.ZERO
+
+onready var hud_display = get_parent().get_node("HUD")
+onready var dissub_unit = get_parent().get_node("DISSUB")
+onready var toggle_lights = false
+
+onready var seasounds = $SurfSounds
+onready var deepsfx1 = $Deepsounds1
+onready var deepsfx2 = $Deepsounds2
+onready var seamotion = $BoatRock
+
+onready var velocity = Vector2()
+onready var depth = 0
+export var rv_cap = 10   ## game constant
+var cum_tot_saved = 0   # Cumulative game counter of total people saved, across stages...
+onready var crew_saved = 0	  # Cumulative stage counter of crew saved during a single stage.
+onready var crew_remaining = 0  # Crew remaining on a DISSUB during a single stage.
+var rv_space = rv_cap
+onready var this_crew = dissub_unit.crew_size  # Surviving crew on a DISSUB in a single stage.
+onready var seal_check:bool = false  # Boolean check that a seal with a DISSUB is successful.
+onready var sortie_array = []
+onready var sort_arr_size = 0
+onready var fin_elem_val = 0
+onready var rescue_sortie = 0	   # Sortie defined as a trip from surface to surface where
+					   # mating with a DISSUB occurs.
+
+func _ready():
+	dissub_unit.connect("mated", self, "_on_DISSUB_mated")
+	dissub_unit.connect("demated", self, "_on_DISSUB_demated")
+
+
+enum {
+	SKY,
+	SURFACE,
+	DEEPSEA,
+	RESCUEOPS
+}
+
+var state = SKY
+
+
+func get_motion():
+	# Detect up/down/left/right keystate and only move when pressed\
+	velocity = Vector2(0,bouyant_force.y + gravity_force.y)
+	if Input.is_action_pressed('ui_right'):
+		if Input.is_action_pressed('ui_boost'):
+			velocity.x += 1.5 * motor_speed.x
+		else:
+			velocity.x += motor_speed.x
+	if Input.is_action_pressed('ui_left'):
+		if Input.is_action_pressed('ui_boost'):
+			velocity.x -= 1.5 * motor_speed.x
+		else:
+			velocity.x -= motor_speed.x
+	if Input.is_action_pressed('ui_down'):
+		if Input.is_action_pressed('ui_boost'):
+			velocity.y += bouyant_force.y + boost_speed.y + gravity_force.y
+		else:
+			velocity.y += bouyant_force.y + motor_speed.y + gravity_force.y
+	if Input.is_action_pressed('ui_up'):
+		if Input.is_action_pressed('ui_boost'):
+			velocity.y += bouyant_force.y - boost_speed.y + gravity_force.y
+		else:
+			velocity.y += bouyant_force.y - motor_speed.y + gravity_force.y
+	if Input.is_action_pressed('rescue'):
+		velocity = Vector2.ZERO
+
+func sky_motion():
+	## Motion in air after stage load is a drop to the sea!
+	velocity = Vector2(0,98)
+
+func _physics_process(delta: float) -> void:
+	match state:
+		SKY:
+			sky_state()
+			sky_motion()
+			hud_display.null_init()
+		SURFACE:
+			surface_state()
+			get_motion()
+		DEEPSEA:
+			deepsea_state()
+			get_motion()
+			hud_display.update_gages()
+		RESCUEOPS:
+			rescue_operations(this_crew, crew_remaining)
+			get_motion()
+	move_and_slide(velocity)
+
+func sky_state():
+	velocity = Vector2(0,98)
+	seasounds.play()
+
+func surface_state():
+	seasounds.play()
+	seamotion.play("Surfacemotion")
+
+	
+func deepsea_state():
+	seamotion.stop()
+	seasounds.stop()
+	deepsfx1.play()
+
+
+func _unhandled_input(event):
+	if event.is_action_pressed("toggle_lights"):
+		toggle_lights = !toggle_lights
+		$aftFlood.set_enabled(toggle_lights)
+		$fwdFlood.set_enabled(toggle_lights)
+
+
+func rescue_operations(this_crew, crew_remaining):
+  ## Game logic for each sortie
+	if rescue_sortie == 0:
+	  _create_sortie_array(this_crew)
+	
+	rescue_sortie += 1
+	
+	if rv_space >= sortie_array[rescue_sortie]:
+	  rv_space -= sortie_array[rescue_sortie]
+	  cum_tot_saved += sortie_array[rescue_sortie]
+	
+	##Final signal with number saved...
+	emit_signal("saved",sortie_array[rescue_sortie])
+
+func _create_sortie_array(this_crew):
+      ## Create sortie_array based on crew size and RV capacity:
+	if this_crew % rv_cap>0:
+	   sort_arr_size = (this_crew - this_crew % rv_cap)/rv_cap + 1
+	   fin_elem_val = this_crew % rv_cap
+	else:
+	   sort_arr_size = this_crew / rv_cap
+	   fin_elem_val = rv_cap	   
+	
+	#Resizes the null array of size 1 to new size...
+	sortie_array.resize(sort_arr_size)
+	#Loads first 1 through n-1 elements with rv capacity...
+	for cnt in Range(0,sort_arr_size-1):
+	   sortie_array[cnt]=rv_cap
+	#Ensures final element contains correct number of crew...
+	sortie_array[sort_arr_size-1] = fin_elem_val
+
+func _on_SurfZone_body_entered(body):
+	state = SURFACE
+
+func _on_SurfZone_body_exited(body):
+	state = DEEPSEA
+
+
+func _on_DISSUB_mated(crew_size, _mate_seal):
+	state = RESCUEOPS
+
+func _on_DISSUB_demated(_mate_seal):
+	pass
+
+
+func _on_SkyZone_area_entered(area):
+	state = SKY
+
+
+func _on_SkyZone_area_exited(area):
+	state = SURFACE

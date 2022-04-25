@@ -1,0 +1,151 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://levels/Rope.tscn" type="PackedScene" id=1]
+
+[node name="HoseScope" type="Node2D"]
+__meta__ = {
+"_edit_horizontal_guides_": [ 1018.0, -418.0 ],
+"_editor_description_": "Hose Scope is a main scene for multiple segments of hose (rope.tscn) connected for the full ocean length."
+}
+
+[node name="Rope" parent="." instance=ExtResource( 1 )]
+position = Vector2( 726, -9 )
+rotation = -1.8326
+z_index = 0
+z_as_relative = true
+minimum_distance = 1
+
+[node name="Segments" parent="Rope" index="0"]
+z_index = 0
+z_as_relative = true
+
+[node name="PinJoint2D" parent="Rope/Segments/Segment" index="1"]
+node_b = NodePath("../../../../Rope2/Segments/AnchorSegment")
+
+[node name="Rope2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 592, -124 )
+rotation = 1.5708
+z_index = 0
+z_as_relative = true
+minimum_distance = 1
+
+[node name="Segments" parent="Rope2" index="0"]
+z_index = 0
+z_as_relative = true
+
+[node name="PinJoint2D" parent="Rope2/Segments/Segment" index="1"]
+node_b = NodePath("../../../../Rope3/Segments/AnchorSegment")
+
+[node name="Rope3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 592, 589 )
+rotation = 1.5708
+z_index = 0
+z_as_relative = true
+minimum_distance = 1
+
+[node name="Segments" parent="Rope3" index="0"]
+z_index = 0
+z_as_relative = true
+
+[node name="PinJoint2D" parent="Rope3/Segments/Segment" index="1"]
+node_b = NodePath("../../../../Rope4/Segments/AnchorSegment")
+
+[node name="Rope4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 469, 753 )
+rotation = -2.0944
+z_index = 0
+z_as_relative = true
+minimum_distance = 1
+
+[node name="Segments" parent="Rope4" index="0"]
+z_index = 0
+z_as_relative = true
+
+[editable path="Rope"]
+[editable path="Rope/Segments/Segment"]
+[editable path="Rope/Segments/Segment2"]
+[editable path="Rope/Segments/Segment3"]
+[editable path="Rope/Segments/Segment4"]
+[editable path="Rope/Segments/Segment5"]
+[editable path="Rope/Segments/Segment6"]
+[editable path="Rope/Segments/Segment7"]
+[editable path="Rope/Segments/Segment8"]
+[editable path="Rope/Segments/Segment9"]
+[editable path="Rope/Segments/Segment10"]
+[editable path="Rope/Segments/Segment11"]
+[editable path="Rope/Segments/Segment12"]
+[editable path="Rope/Segments/Segment13"]
+[editable path="Rope/Segments/Segment14"]
+[editable path="Rope/Segments/Segment15"]
+[editable path="Rope/Segments/Segment16"]
+[editable path="Rope/Segments/Segment17"]
+[editable path="Rope/Segments/Segment18"]
+[editable path="Rope/Segments/Segment19"]
+[editable path="Rope/Segments/Segment20"]
+[editable path="Rope/Segments/AnchorSegment"]
+[editable path="Rope2"]
+[editable path="Rope2/Segments/Segment"]
+[editable path="Rope2/Segments/Segment2"]
+[editable path="Rope2/Segments/Segment3"]
+[editable path="Rope2/Segments/Segment4"]
+[editable path="Rope2/Segments/Segment5"]
+[editable path="Rope2/Segments/Segment6"]
+[editable path="Rope2/Segments/Segment7"]
+[editable path="Rope2/Segments/Segment8"]
+[editable path="Rope2/Segments/Segment9"]
+[editable path="Rope2/Segments/Segment10"]
+[editable path="Rope2/Segments/Segment11"]
+[editable path="Rope2/Segments/Segment12"]
+[editable path="Rope2/Segments/Segment13"]
+[editable path="Rope2/Segments/Segment14"]
+[editable path="Rope2/Segments/Segment15"]
+[editable path="Rope2/Segments/Segment16"]
+[editable path="Rope2/Segments/Segment17"]
+[editable path="Rope2/Segments/Segment18"]
+[editable path="Rope2/Segments/Segment19"]
+[editable path="Rope2/Segments/Segment20"]
+[editable path="Rope2/Segments/AnchorSegment"]
+[editable path="Rope3"]
+[editable path="Rope3/Segments/Segment"]
+[editable path="Rope3/Segments/Segment2"]
+[editable path="Rope3/Segments/Segment3"]
+[editable path="Rope3/Segments/Segment4"]
+[editable path="Rope3/Segments/Segment5"]
+[editable path="Rope3/Segments/Segment6"]
+[editable path="Rope3/Segments/Segment7"]
+[editable path="Rope3/Segments/Segment8"]
+[editable path="Rope3/Segments/Segment9"]
+[editable path="Rope3/Segments/Segment10"]
+[editable path="Rope3/Segments/Segment11"]
+[editable path="Rope3/Segments/Segment12"]
+[editable path="Rope3/Segments/Segment13"]
+[editable path="Rope3/Segments/Segment14"]
+[editable path="Rope3/Segments/Segment15"]
+[editable path="Rope3/Segments/Segment16"]
+[editable path="Rope3/Segments/Segment17"]
+[editable path="Rope3/Segments/Segment18"]
+[editable path="Rope3/Segments/Segment19"]
+[editable path="Rope3/Segments/Segment20"]
+[editable path="Rope3/Segments/AnchorSegment"]
+[editable path="Rope4"]
+[editable path="Rope4/Segments/Segment"]
+[editable path="Rope4/Segments/Segment2"]
+[editable path="Rope4/Segments/Segment3"]
+[editable path="Rope4/Segments/Segment4"]
+[editable path="Rope4/Segments/Segment5"]
+[editable path="Rope4/Segments/Segment6"]
+[editable path="Rope4/Segments/Segment7"]
+[editable path="Rope4/Segments/Segment8"]
+[editable path="Rope4/Segments/Segment9"]
+[editable path="Rope4/Segments/Segment10"]
+[editable path="Rope4/Segments/Segment11"]
+[editable path="Rope4/Segments/Segment12"]
+[editable path="Rope4/Segments/Segment13"]
+[editable path="Rope4/Segments/Segment14"]
+[editable path="Rope4/Segments/Segment15"]
+[editable path="Rope4/Segments/Segment16"]
+[editable path="Rope4/Segments/Segment17"]
+[editable path="Rope4/Segments/Segment18"]
+[editable path="Rope4/Segments/Segment19"]
+[editable path="Rope4/Segments/Segment20"]
+[editable path="Rope4/Segments/AnchorSegment"]

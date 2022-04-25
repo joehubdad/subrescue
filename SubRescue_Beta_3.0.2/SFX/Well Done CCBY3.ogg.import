@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Well Done CCBY3.ogg-61f115d3d2a565925799ce2602e4df1b.oggstr"
+
+[deps]
+
+source_file="res://SFX/Well Done CCBY3.ogg"
+dest_files=[ "res://.import/Well Done CCBY3.ogg-61f115d3d2a565925799ce2602e4df1b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

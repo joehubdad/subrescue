@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/radakan - old moltara underwater ruins_0.ogg-3464e15a565c2ce0ef090bd22dc31a90.oggstr"
+
+[deps]
+
+source_file="res://SFX/radakan - old moltara underwater ruins_0.ogg"
+dest_files=[ "res://.import/radakan - old moltara underwater ruins_0.ogg-3464e15a565c2ce0ef090bd22dc31a90.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

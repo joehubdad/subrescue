@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/waveslap_second.wav-b0ab51dbe39b1d05ee406b6897578dcf.sample"
+
+[deps]
+
+source_file="res://SFX/waveslap_second.wav"
+dest_files=[ "res://.import/waveslap_second.wav-b0ab51dbe39b1d05ee406b6897578dcf.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

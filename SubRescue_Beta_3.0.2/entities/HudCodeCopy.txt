@@ -1,0 +1,74 @@
+extends CanvasLayer
+
+onready var player = get_parent().get_node("RescueSub")
+onready var dissub = get_parent().get_node("DISSUB")
+var depth : float
+var crew_sizeg : int
+var crew_savedg : int = 0
+var xfer_seal : bool = false
+var seal_counter : int = 0
+
+func ready():
+	dissub.connect("mated", self, "_on_DISSUB_mated")
+	dissub.connect("demated", self, "_on_DISSUB_demated")
+	player.connect("saved", self, "_on_RescueSub_saved")
+	null_init()
+
+func null_init():
+	$Console/Guage/Rescue_depth.text = " "
+	$Console/Guage2/Rescue_internal.text = String("%.2f" % 14.67)
+	$Console/Guage3/Rescue_seapress.text = String("%.2f" % 14.67)
+	$Console/Guage4/TS_press.text = String("%.2f" % 14.67)
+	$Mating/MatingStatus/ColorRect/MateStatus.text = "NO SEAL"
+	$Mating/MatingStatus/ColorRect/MateStatus.add_color_override("font_color",Color( 1, 0, 0, 1 ))
+	$crewstats/MatingStatus/ColorRect/CrewStatus.text = "UNKNOWN"
+	$crewstats/MatingStatus/ColorRect/CrewStatus.add_color_override("font_color",Color( 1, 0, 0, 1 ))
+	$crewsaves/MatingStatus/ColorRect/SavesStatus.text = "0"
+	
+
+func update_gages():
+	var pposy = player.global_position.y
+	depth = pposy/2
+	var RV_press = 14.67
+	var sea_press = depth * 0.445
+	var TS_press = sea_press
+	$crewsaves/MatingStatus/ColorRect/SavesStatus.text = String("%d" % crew_savedg)
+	$Console/Guage/Rescue_depth.text = String("%.2f" % depth)
+	$Console/Guage2/Rescue_internal.text = String("%.2f" % RV_press)
+	$Console/Guage3/Rescue_seapress.text = String("%.2f" % sea_press)
+	$Console/Guage4/TS_press.text = String("%.2f" % TS_press)
+	
+	if xfer_seal:
+		TS_press = RV_press
+		$Mating/MatingStatus/ColorRect/MateStatus.text = "SEALED"   ## Green color if seal.
+		$Mating/MatingStatus/ColorRect/MateStatus.add_color_override("font_color",Color( 0, 1, 0, 1 ))
+		$Console/Guage4/TS_press.text = String("%.2f" % TS_press)
+	else:
+		$Mating/MatingStatus/ColorRect/MateStatus.text = "NO SEAL"   ## RED color if no seal
+		$Mating/MatingStatus/ColorRect/MateStatus.add_color_override("font_color",Color( 1, 0, 0, 1 ))
+
+	## A counter check to maintain the gage updated after making contact with the DISSUB.
+	if seal_counter > 0:
+		$crewstats/MatingStatus/ColorRect/CrewStatus.text = String("%d" % crew_sizeg)
+		$crewstats/MatingStatus/ColorRect/CrewStatus.add_color_override("font_color",Color( 0, 1, 0, 1 ))
+		$crewsaves/MatingStatus/ColorRect/SavesStatus.text = String("%d" % crew_savedg)
+	else:
+		$crewstats/MatingStatus/ColorRect/CrewStatus.text = "UNKNOWN"
+		$crewstats/MatingStatus/ColorRect/CrewStatus.add_color_override("font_color",Color( 1, 0, 0, 1 ))
+		$crewsaves/MatingStatus/ColorRect/SavesStatus.text = "0"
+
+
+func _on_DISSUB_mated(crew_size, mate_seal):
+	xfer_seal = mate_seal
+	seal_counter += 1
+	crew_sizeg = crew_size
+	update_gages()
+
+func _on_DISSUB_demated(mate_seal):
+	xfer_seal = mate_seal
+	update_gages()
+
+func _on_RescueSub_saved(crew_saved):
+	crew_savedg = crew_saved
+	update_gages()
+

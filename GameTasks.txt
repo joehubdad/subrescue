@@ -1,5 +1,0 @@
-Game Dev To Do List:
-
-1. Debug the Crew Remaining code DONE
-2. Debug the array generation code DONE
-3. Update the Globals.gd script to track scores.

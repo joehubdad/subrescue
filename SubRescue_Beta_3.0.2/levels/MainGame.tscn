@@ -1,0 +1,179 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://entities/RescueSub.tscn" type="PackedScene" id=1]
+[ext_resource path="res://entities/OceanFloor.tres" type="TileSet" id=2]
+[ext_resource path="res://art/water1.png" type="Texture" id=3]
+[ext_resource path="res://art/sky1.png" type="Texture" id=4]
+[ext_resource path="res://art/Underwater Mountains.png" type="Texture" id=5]
+[ext_resource path="res://levels/MainGame.gd" type="Script" id=6]
+[ext_resource path="res://entities/VOO.tscn" type="PackedScene" id=7]
+[ext_resource path="res://levels/Rope.tscn" type="PackedScene" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1310.39, 841.495 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 922.955, 46.392 )
+
+[node name="MainGame" type="Node2D"]
+pause_mode = 1
+position = Vector2( -21, -226 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 1579.0, -314.0, -530.0 ],
+"_edit_vertical_guides_": [ 1703.0, 649.0, 234.0, -21.0, 361.0 ]
+}
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2( 0, -1 )
+tile_set = ExtResource( 2 )
+collision_layer = 16
+format = 1
+tile_data = PoolIntArray( 65536, -1610612736, 0, 65562, -1073741824, 0, 262144, -1610612736, 0, 262170, -1073741824, 0, 524288, -1610612736, 0, 524314, -1073741824, 0, 786432, -1610612736, 0, 786458, -1073741824, 0, 1048576, -1610612736, 0, 1048602, -1073741824, 0, 1310720, -1610612736, 0, 1310746, -1073741824, 0, 1507328, 536870913, 0, 1507352, 1, 0, 1572866, 0, 0, 1572869, 0, 0, 1572873, 0, 0, 1572877, 0, 0, 1572881, 0, 0, 1572884, 0, 0 )
+
+[node name="Rope" parent="." instance=ExtResource( 8 )]
+pause_mode = 1
+position = Vector2( 518, -356 )
+rotation = -0.261799
+
+[node name="Segments" parent="Rope" index="0"]
+pause_mode = 1
+
+[node name="PinJoint2D" parent="Rope/Segments/Segment" index="1"]
+softness = 0.1
+
+[node name="PinJoint2D" parent="Rope/Segments/Segment2" index="1"]
+softness = 0.1
+
+[node name="PinJoint2D" parent="Rope/Segments/Segment3" index="1"]
+softness = 0.1
+
+[node name="PinJoint2D" parent="Rope/Segments/Segment4" index="1"]
+softness = 0.1
+
+[node name="PinJoint2D" parent="Rope/Segments/Segment5" index="1"]
+softness = 0.1
+
+[node name="PinJoint2D" parent="Rope/Segments/Segment6" index="1"]
+softness = 0.1
+
+[node name="PinJoint2D" parent="Rope/Segments/Segment7" index="1"]
+softness = 0.1
+
+[node name="PinJoint2D" parent="Rope/Segments/Segment8" index="1"]
+softness = 0.1
+
+[node name="PinJoint2D" parent="Rope/Segments/Segment9" index="1"]
+softness = 0.1
+
+[node name="PinJoint2D" parent="Rope/Segments/Segment10" index="1"]
+softness = 0.1
+
+[node name="PinJoint2D" parent="Rope/Segments/Segment11" index="1"]
+softness = 0.1
+
+[node name="PinJoint2D" parent="Rope/Segments/Segment12" index="1"]
+softness = 0.1
+
+[node name="PinJoint2D" parent="Rope/Segments/Segment13" index="1"]
+softness = 0.1
+
+[node name="PinJoint2D" parent="Rope/Segments/Segment14" index="1"]
+softness = 0.1
+
+[node name="PinJoint2D" parent="Rope/Segments/Segment15" index="1"]
+softness = 0.1
+
+[node name="PinJoint2D" parent="Rope/Segments/Segment16" index="1"]
+softness = 0.1
+
+[node name="PinJoint2D" parent="Rope/Segments/Segment17" index="1"]
+softness = 0.1
+
+[node name="PinJoint2D" parent="Rope/Segments/Segment18" index="1"]
+softness = 0.1
+
+[node name="PinJoint2D" parent="Rope/Segments/Segment19" index="1"]
+softness = 0.1
+
+[node name="Segment20" parent="Rope/Segments" index="19"]
+pause_mode = 1
+
+[node name="PinJoint2D" parent="Rope/Segments/Segment20" index="1"]
+softness = 0.1
+
+[node name="Skyarea" type="Area2D" parent="."]
+collision_layer = 2
+gravity = 250.0
+
+[node name="skysensor" type="CollisionShape2D" parent="Skyarea"]
+position = Vector2( 832, -640 )
+scale = Vector2( 0.872696, 0.608441 )
+shape = SubResource( 1 )
+
+[node name="Sky" type="Sprite" parent="Skyarea"]
+position = Vector2( 840.431, -397.335 )
+scale = Vector2( 0.872696, 0.608441 )
+texture = ExtResource( 4 )
+
+[node name="Surf" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="Surface" type="Sprite" parent="Surf"]
+show_behind_parent = true
+position = Vector2( 842.218, -2.98534 )
+scale = Vector2( 1.22764, 0.216149 )
+texture = ExtResource( 3 )
+
+[node name="SurfDetector" type="CollisionShape2D" parent="Surf"]
+position = Vector2( 864.761, 32.8342 )
+shape = SubResource( 2 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+show_behind_parent = true
+position = Vector2( 846, 552 )
+scale = Vector2( 1.07063, 1.34583 )
+texture = ExtResource( 5 )
+
+[node name="VOO" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1216, -192 )
+collision_layer = 64
+
+[node name="RescueSub" parent="." instance=ExtResource( 1 )]
+pause_mode = 1
+position = Vector2( 273, -309 )
+
+[connection signal="body_entered" from="Skyarea" to="RescueSub" method="_on_Skyarea_body_entered"]
+[connection signal="body_exited" from="Skyarea" to="RescueSub" method="_on_Skyarea_body_exited"]
+[connection signal="body_entered" from="Surf" to="VOO" method="_on_Surf_body_entered"]
+[connection signal="body_entered" from="Surf" to="RescueSub" method="_on_Surf_body_entered"]
+[connection signal="body_exited" from="Surf" to="RescueSub" method="_on_Surf_body_exited"]
+
+[editable path="Rope"]
+[editable path="Rope/Segments/Segment"]
+[editable path="Rope/Segments/Segment2"]
+[editable path="Rope/Segments/Segment3"]
+[editable path="Rope/Segments/Segment4"]
+[editable path="Rope/Segments/Segment5"]
+[editable path="Rope/Segments/Segment6"]
+[editable path="Rope/Segments/Segment7"]
+[editable path="Rope/Segments/Segment8"]
+[editable path="Rope/Segments/Segment9"]
+[editable path="Rope/Segments/Segment10"]
+[editable path="Rope/Segments/Segment11"]
+[editable path="Rope/Segments/Segment12"]
+[editable path="Rope/Segments/Segment13"]
+[editable path="Rope/Segments/Segment14"]
+[editable path="Rope/Segments/Segment15"]
+[editable path="Rope/Segments/Segment16"]
+[editable path="Rope/Segments/Segment17"]
+[editable path="Rope/Segments/Segment18"]
+[editable path="Rope/Segments/Segment19"]
+[editable path="Rope/Segments/Segment20"]
+[editable path="VOO"]
+[editable path="RescueSub"]
+[editable path="RescueSub/HUD"]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 632.563, 10 )
+
+[node name="Skyblock" type="Node2D"]
+light_mask = 2
+
+[node name="blockbody" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="blockshape" type="CollisionShape2D" parent="blockbody"]
+shape = SubResource( 1 )

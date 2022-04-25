@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ambient2(Nautilus).mp3-0d2d85d270560c482a2abd1562f27671.mp3str"
+
+[deps]
+
+source_file="res://SFX/ambient2(Nautilus).mp3"
+dest_files=[ "res://.import/ambient2(Nautilus).mp3-0d2d85d270560c482a2abd1562f27671.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

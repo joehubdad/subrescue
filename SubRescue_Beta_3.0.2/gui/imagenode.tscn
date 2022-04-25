@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://art/gamepadcontroller.png" type="Texture" id=1]
+
+[node name="picnode" type="CanvasLayer"]
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -401.0
+margin_top = -231.0
+margin_right = 99.0
+margin_bottom = 80.0
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
