@@ -1,3 +1,3 @@
-# Rope
+# Submarine Rescue - 2D Platformer Beta Release
 
-Godot 3.2 Rope addon written in C#.
+Beta release from 25 April 2022.
